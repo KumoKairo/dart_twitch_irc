@@ -24,6 +24,9 @@ class _FakeWebSocketSink_0 extends _i1.Fake implements _i2.WebSocketSink {}
 class _FakeStreamChannel_1<T> extends _i1.Fake implements _i3.StreamChannel<T> {
 }
 
+class _FakeStreamSubscription_2<T> extends _i1.Fake
+    implements _i4.StreamSubscription<T> {}
+
 /// A class which mocks [WebSocketChannel].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -76,4 +79,248 @@ class MockWebSocketChannel extends _i1.Mock implements _i2.WebSocketChannel {
   _i3.StreamChannel<S> cast<S>() =>
       (super.noSuchMethod(Invocation.method(#cast, []),
           returnValue: _FakeStreamChannel_1<S>()) as _i3.StreamChannel<S>);
+}
+
+/// A class which mocks [WebSocketSink].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockWebSocketSink extends _i1.Mock implements _i2.WebSocketSink {
+  MockWebSocketSink() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i4.Future<dynamic> get done => (super.noSuchMethod(Invocation.getter(#done),
+      returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+  @override
+  _i4.Future<dynamic> close([int? closeCode, String? closeReason]) =>
+      (super.noSuchMethod(Invocation.method(#close, [closeCode, closeReason]),
+          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+  @override
+  void add(dynamic data) => super.noSuchMethod(Invocation.method(#add, [data]),
+      returnValueForMissingStub: null);
+  @override
+  void addError(Object? error, [StackTrace? stackTrace]) =>
+      super.noSuchMethod(Invocation.method(#addError, [error, stackTrace]),
+          returnValueForMissingStub: null);
+  @override
+  _i4.Future<dynamic> addStream(_i4.Stream<dynamic>? stream) =>
+      (super.noSuchMethod(Invocation.method(#addStream, [stream]),
+          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+}
+
+/// A class which mocks [Stream].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockStream<T> extends _i1.Mock implements _i4.Stream<T> {
+  MockStream() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  bool get isBroadcast =>
+      (super.noSuchMethod(Invocation.getter(#isBroadcast), returnValue: false)
+          as bool);
+  @override
+  _i4.Future<int> get length => (super.noSuchMethod(Invocation.getter(#length),
+      returnValue: Future<int>.value(0)) as _i4.Future<int>);
+  @override
+  _i4.Future<bool> get isEmpty =>
+      (super.noSuchMethod(Invocation.getter(#isEmpty),
+          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+  @override
+  _i4.Future<T> get first => (super.noSuchMethod(Invocation.getter(#first),
+      returnValue: Future<T>.value(null)) as _i4.Future<T>);
+  @override
+  _i4.Future<T> get last => (super.noSuchMethod(Invocation.getter(#last),
+      returnValue: Future<T>.value(null)) as _i4.Future<T>);
+  @override
+  _i4.Future<T> get single => (super.noSuchMethod(Invocation.getter(#single),
+      returnValue: Future<T>.value(null)) as _i4.Future<T>);
+  @override
+  _i4.Stream<T> asBroadcastStream(
+          {void Function(_i4.StreamSubscription<T>)? onListen,
+          void Function(_i4.StreamSubscription<T>)? onCancel}) =>
+      (super.noSuchMethod(
+          Invocation.method(#asBroadcastStream, [],
+              {#onListen: onListen, #onCancel: onCancel}),
+          returnValue: Stream<T>.empty()) as _i4.Stream<T>);
+  @override
+  _i4.StreamSubscription<T> listen(void Function(T)? onData,
+          {Function? onError, void Function()? onDone, bool? cancelOnError}) =>
+      (super.noSuchMethod(
+              Invocation.method(#listen, [
+                onData
+              ], {
+                #onError: onError,
+                #onDone: onDone,
+                #cancelOnError: cancelOnError
+              }),
+              returnValue: _FakeStreamSubscription_2<T>())
+          as _i4.StreamSubscription<T>);
+  @override
+  _i4.Stream<T> where(bool Function(T)? test) =>
+      (super.noSuchMethod(Invocation.method(#where, [test]),
+          returnValue: Stream<T>.empty()) as _i4.Stream<T>);
+  @override
+  _i4.Stream<S> map<S>(S Function(T)? convert) =>
+      (super.noSuchMethod(Invocation.method(#map, [convert]),
+          returnValue: Stream<S>.empty()) as _i4.Stream<S>);
+  @override
+  _i4.Stream<E> asyncMap<E>(_i4.FutureOr<E> Function(T)? convert) =>
+      (super.noSuchMethod(Invocation.method(#asyncMap, [convert]),
+          returnValue: Stream<E>.empty()) as _i4.Stream<E>);
+  @override
+  _i4.Stream<E> asyncExpand<E>(_i4.Stream<E>? Function(T)? convert) =>
+      (super.noSuchMethod(Invocation.method(#asyncExpand, [convert]),
+          returnValue: Stream<E>.empty()) as _i4.Stream<E>);
+  @override
+  _i4.Stream<T> handleError(Function? onError,
+          {bool Function(dynamic)? test}) =>
+      (super.noSuchMethod(
+          Invocation.method(#handleError, [onError], {#test: test}),
+          returnValue: Stream<T>.empty()) as _i4.Stream<T>);
+  @override
+  _i4.Stream<S> expand<S>(Iterable<S> Function(T)? convert) =>
+      (super.noSuchMethod(Invocation.method(#expand, [convert]),
+          returnValue: Stream<S>.empty()) as _i4.Stream<S>);
+  @override
+  _i4.Future<dynamic> pipe(_i4.StreamConsumer<T>? streamConsumer) =>
+      (super.noSuchMethod(Invocation.method(#pipe, [streamConsumer]),
+          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+  @override
+  _i4.Stream<S> transform<S>(_i4.StreamTransformer<T, S>? streamTransformer) =>
+      (super.noSuchMethod(Invocation.method(#transform, [streamTransformer]),
+          returnValue: Stream<S>.empty()) as _i4.Stream<S>);
+  @override
+  _i4.Future<T> reduce(T Function(T, T)? combine) =>
+      (super.noSuchMethod(Invocation.method(#reduce, [combine]),
+          returnValue: Future<T>.value(null)) as _i4.Future<T>);
+  @override
+  _i4.Future<S> fold<S>(S? initialValue, S Function(S, T)? combine) =>
+      (super.noSuchMethod(Invocation.method(#fold, [initialValue, combine]),
+          returnValue: Future<S>.value(null)) as _i4.Future<S>);
+  @override
+  _i4.Future<String> join([String? separator = r'']) =>
+      (super.noSuchMethod(Invocation.method(#join, [separator]),
+          returnValue: Future<String>.value('')) as _i4.Future<String>);
+  @override
+  _i4.Future<bool> contains(Object? needle) =>
+      (super.noSuchMethod(Invocation.method(#contains, [needle]),
+          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+  @override
+  _i4.Future<dynamic> forEach(void Function(T)? action) =>
+      (super.noSuchMethod(Invocation.method(#forEach, [action]),
+          returnValue: Future<dynamic>.value()) as _i4.Future<dynamic>);
+  @override
+  _i4.Future<bool> every(bool Function(T)? test) =>
+      (super.noSuchMethod(Invocation.method(#every, [test]),
+          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+  @override
+  _i4.Future<bool> any(bool Function(T)? test) =>
+      (super.noSuchMethod(Invocation.method(#any, [test]),
+          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+  @override
+  _i4.Stream<R> cast<R>() => (super.noSuchMethod(Invocation.method(#cast, []),
+      returnValue: Stream<R>.empty()) as _i4.Stream<R>);
+  @override
+  _i4.Future<List<T>> toList() =>
+      (super.noSuchMethod(Invocation.method(#toList, []),
+          returnValue: Future<List<T>>.value(<T>[])) as _i4.Future<List<T>>);
+  @override
+  _i4.Future<Set<T>> toSet() =>
+      (super.noSuchMethod(Invocation.method(#toSet, []),
+          returnValue: Future<Set<T>>.value(<T>{})) as _i4.Future<Set<T>>);
+  @override
+  _i4.Future<E> drain<E>([E? futureValue]) =>
+      (super.noSuchMethod(Invocation.method(#drain, [futureValue]),
+          returnValue: Future<E>.value(null)) as _i4.Future<E>);
+  @override
+  _i4.Stream<T> take(int? count) =>
+      (super.noSuchMethod(Invocation.method(#take, [count]),
+          returnValue: Stream<T>.empty()) as _i4.Stream<T>);
+  @override
+  _i4.Stream<T> takeWhile(bool Function(T)? test) =>
+      (super.noSuchMethod(Invocation.method(#takeWhile, [test]),
+          returnValue: Stream<T>.empty()) as _i4.Stream<T>);
+  @override
+  _i4.Stream<T> skip(int? count) =>
+      (super.noSuchMethod(Invocation.method(#skip, [count]),
+          returnValue: Stream<T>.empty()) as _i4.Stream<T>);
+  @override
+  _i4.Stream<T> skipWhile(bool Function(T)? test) =>
+      (super.noSuchMethod(Invocation.method(#skipWhile, [test]),
+          returnValue: Stream<T>.empty()) as _i4.Stream<T>);
+  @override
+  _i4.Stream<T> distinct([bool Function(T, T)? equals]) =>
+      (super.noSuchMethod(Invocation.method(#distinct, [equals]),
+          returnValue: Stream<T>.empty()) as _i4.Stream<T>);
+  @override
+  _i4.Future<T> firstWhere(bool Function(T)? test, {T Function()? orElse}) =>
+      (super.noSuchMethod(
+          Invocation.method(#firstWhere, [test], {#orElse: orElse}),
+          returnValue: Future<T>.value(null)) as _i4.Future<T>);
+  @override
+  _i4.Future<T> lastWhere(bool Function(T)? test, {T Function()? orElse}) =>
+      (super.noSuchMethod(
+          Invocation.method(#lastWhere, [test], {#orElse: orElse}),
+          returnValue: Future<T>.value(null)) as _i4.Future<T>);
+  @override
+  _i4.Future<T> singleWhere(bool Function(T)? test, {T Function()? orElse}) =>
+      (super.noSuchMethod(
+          Invocation.method(#singleWhere, [test], {#orElse: orElse}),
+          returnValue: Future<T>.value(null)) as _i4.Future<T>);
+  @override
+  _i4.Future<T> elementAt(int? index) =>
+      (super.noSuchMethod(Invocation.method(#elementAt, [index]),
+          returnValue: Future<T>.value(null)) as _i4.Future<T>);
+  @override
+  _i4.Stream<T> timeout(Duration? timeLimit,
+          {void Function(_i4.EventSink<T>)? onTimeout}) =>
+      (super.noSuchMethod(
+          Invocation.method(#timeout, [timeLimit], {#onTimeout: onTimeout}),
+          returnValue: Stream<T>.empty()) as _i4.Stream<T>);
+}
+
+/// A class which mocks [StreamSubscription].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockStreamSubscription<T> extends _i1.Mock
+    implements _i4.StreamSubscription<T> {
+  MockStreamSubscription() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  bool get isPaused =>
+      (super.noSuchMethod(Invocation.getter(#isPaused), returnValue: false)
+          as bool);
+  @override
+  _i4.Future<void> cancel() =>
+      (super.noSuchMethod(Invocation.method(#cancel, []),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
+  @override
+  void onData(void Function(T)? handleData) =>
+      super.noSuchMethod(Invocation.method(#onData, [handleData]),
+          returnValueForMissingStub: null);
+  @override
+  void onError(Function? handleError) =>
+      super.noSuchMethod(Invocation.method(#onError, [handleError]),
+          returnValueForMissingStub: null);
+  @override
+  void onDone(void Function()? handleDone) =>
+      super.noSuchMethod(Invocation.method(#onDone, [handleDone]),
+          returnValueForMissingStub: null);
+  @override
+  void pause([_i4.Future<void>? resumeSignal]) =>
+      super.noSuchMethod(Invocation.method(#pause, [resumeSignal]),
+          returnValueForMissingStub: null);
+  @override
+  void resume() => super.noSuchMethod(Invocation.method(#resume, []),
+      returnValueForMissingStub: null);
+  @override
+  _i4.Future<E> asFuture<E>([E? futureValue]) =>
+      (super.noSuchMethod(Invocation.method(#asFuture, [futureValue]),
+          returnValue: Future<E>.value(null)) as _i4.Future<E>);
 }

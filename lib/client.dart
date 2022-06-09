@@ -3,16 +3,20 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 
 typedef Messages = List<String>;
 typedef MessageHandler = bool Function(Messages);
+typedef WebSocketFactory = WebSocketChannel Function();
 
 const channelName = 'kumokairo';
 const userName = 'kumokairo';
 Uri twitchUri = Uri(scheme: 'wss', host: 'irc-ws.chat.twitch.tv', port: 443);
 
 class Client {
+  late WebSocketFactory _webSocketFactory;
   late WebSocketChannel _channel;
   final List<MessageHandler> _handlersQueue = List.empty(growable: true);
 
-  Client({bool autoConnect = true}) {
+  Client({WebSocketFactory? webSocketFactory}) {
+    _webSocketFactory = webSocketFactory ?? defaultWebsocketFactory;
+
     _handlersQueue.addAll([checkAuth, checkPing, checkReconnect]);
     connect();
   }
@@ -20,7 +24,7 @@ class Client {
   void connect() async {
     var envVars = Platform.environment;
 
-    _channel = WebSocketChannel.connect(twitchUri);
+    _channel = _webSocketFactory();
     _channel.stream.listen(receivedMessage);
     sendMessage(
         'CAP REQ :twitch.tv/membership twitch.tv/tags twitch.tv/commands');
@@ -39,6 +43,7 @@ class Client {
   }
 
   void sendMessage(String message) async {
+    message = message.replaceAll(RegExp('PASS .+'), 'PASS :xxx-xxx-xxx');
     print('> $message');
     _channel.sink.add(message);
   }
@@ -97,6 +102,10 @@ class Client {
       return true;
     }
     return false;
+  }
+
+  WebSocketChannel defaultWebsocketFactory() {
+    return WebSocketChannel.connect(twitchUri);
   }
 }
 
