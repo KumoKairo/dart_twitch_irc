@@ -1,25 +1,18 @@
-import 'dart:ffi';
-
-import 'package:twitch_irc/twitch_irc.dart' as twitch_irc;
-import 'package:web_socket_channel/io.dart';
-import 'package:web_socket_channel/status.dart' as status;
 import 'dart:io';
-
-import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 typedef Messages = List<String>;
 typedef MessageHandler = bool Function(Messages);
 
-const channelName = 'mrbalija';
+const channelName = 'kumokairo';
 const userName = 'kumokairo';
 Uri twitchUri = Uri(scheme: 'wss', host: 'irc-ws.chat.twitch.tv', port: 443);
 
 class Client {
-  late IOWebSocketChannel _channel;
-  final Messages _messageQueue = List.empty(growable: true);
+  late WebSocketChannel _channel;
   final List<MessageHandler> _handlersQueue = List.empty(growable: true);
 
-  Client() {
+  Client({bool autoConnect = true}) {
     _handlersQueue.addAll([checkAuth, checkPing, checkReconnect]);
     connect();
   }
@@ -27,7 +20,7 @@ class Client {
   void connect() async {
     var envVars = Platform.environment;
 
-    _channel = IOWebSocketChannel.connect(twitchUri);
+    _channel = WebSocketChannel.connect(twitchUri);
     _channel.stream.listen(receivedMessage);
     sendMessage(
         'CAP REQ :twitch.tv/membership twitch.tv/tags twitch.tv/commands');
