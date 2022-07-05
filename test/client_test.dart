@@ -33,7 +33,7 @@ void main() {
 
   test('Creating a client should send 4 messages to the sink', () {
     setUp();
-    Client(webSocketFactory: mockSocketFactory);
+    var client = Client(webSocketFactory: mockSocketFactory);
     verify(mockSink.add(any)).called(4);
   });
 }

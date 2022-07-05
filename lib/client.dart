@@ -43,17 +43,19 @@ class Client {
   }
 
   void sendMessage(String message) async {
+    // Hiding password from logs
     message = message.replaceAll(RegExp('PASS .+'), 'PASS :xxx-xxx-xxx');
-    print('> $message');
+
+    log('> $message');
     _channel.sink.add(message);
   }
 
   void receivedMessage(dynamic rawMessage) async {
     var messages = (rawMessage as String).trim().split('\r\n');
     for (var message in messages) {
-      print(message);
+      log(message);
     }
-    print('---------');
+    log('---------');
     // Running all handlers, returning early if we found a perfect match
     // That is, if a certain message is to be handled by only one handler
     for (var handler in _handlersQueue) {
@@ -106,6 +108,10 @@ class Client {
 
   WebSocketChannel defaultWebsocketFactory() {
     return WebSocketChannel.connect(twitchUri);
+  }
+
+  void log(String message) {
+    print(message);
   }
 }
 
